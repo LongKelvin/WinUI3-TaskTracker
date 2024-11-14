@@ -1,8 +1,8 @@
 ﻿using MediatR;
 
-namespace TaskTracker.Application.Commands.CreateTask
+namespace TaskTracker.Application.Tasks.Commands.CreateTask
 {
-    public class CreateTaskCommand : IRequest
+    public record CreateTaskCommand : IRequest<Guid>
     {
         public required string Title { get; set; }
         public string? Description { get; set; }

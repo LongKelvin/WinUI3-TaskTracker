@@ -1,4 +1,6 @@
-﻿using TaskTracker.Domain.Enums;
+﻿using System.Diagnostics.CodeAnalysis;
+
+using TaskTracker.Domain.Enums;
 using TaskTracker.Domain.Services;
 
 namespace TaskTracker.Domain.Entities
@@ -6,7 +8,7 @@ namespace TaskTracker.Domain.Entities
     public class TaskItem : BaseEntity
     {
         public required string Title { get; set; }
-        public string Description { get; set; } = string.Empty;
+        public string? Description { get; set; } = string.Empty;
         public DateTime? DueDate { get; set; }
         public TaskState TaskState { get; private set; } = TaskState.Todo;
 
@@ -16,9 +18,12 @@ namespace TaskTracker.Domain.Entities
         {
         }
 
-        public TaskItem(string title)
+        [SetsRequiredMembers]
+        public TaskItem(string title, string? description, DateTime? dueDate)
         {
             Title = title;
+            Description = description;
+            DueDate = dueDate;
             CreatedDate = DateTime.Now;
             UpdatedDate = DateTime.Now;
         }
