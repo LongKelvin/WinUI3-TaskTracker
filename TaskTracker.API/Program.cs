@@ -1,4 +1,3 @@
-
 namespace TaskTracker.API
 {
     public class Program
@@ -10,6 +9,11 @@ namespace TaskTracker.API
             // Add services to the container.
 
             builder.Services.AddControllers();
+
+            // Modular DI registration
+            builder.Services.AddApplicationServices();
+            builder.Services.AddInfrastructureServices(builder.Configuration);
+
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
 

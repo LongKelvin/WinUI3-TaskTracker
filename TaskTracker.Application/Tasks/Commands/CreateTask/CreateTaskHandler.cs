@@ -13,8 +13,8 @@ namespace TaskTracker.Application.Tasks.Commands.CreateTask
         {
             var task = new TaskItem(request.Title, request.Description, request.DueDate);
 
-            await _taskRepository.AddTaskAsync(task);
-            return task.Id;
+            return await _taskRepository.AddTaskAsync(task);
+
         }
     }
 }
